@@ -1,0 +1,156 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+<h2> List of all checkins sorted </h2>
+
+<div class="checkincontainer"> 
+<div class="checkresult">
+ 
+    <h5> Checked In</h5>   
+    <table>
+        <tbody>
+            <tr>
+                <th>  Booking</th>
+                <th>room</th>
+                <th>#rooms</th>
+                <th>Date In</th>
+                <th>Date Out</th>
+                <th>Price</th>
+                <th>Checked out?</th>
+                
+                <th> Check Out</th>
+            </tr>
+            
+
+            {% for checking in bookingsin %}
+            
+           
+            <tr>
+                <td>{{checking.booking}}--</td>
+                <td>{{checking.checkin_room}}</td>
+                <td>{{checking.booking.number_of_rooms}} </td>
+                <td>{{checking.checkin_date}} </td>
+                <td> {{checking.checkout_date}}</td>
+                <td>{{checking.booking.book_price}} </td>
+                <td> {{checking.check_out_status}}</td>
+               
+               
+               
+                
+                <td class="var1">
+                    <form action="{% url 'checkout' %}" method="post">
+                        {% csrf_token %}
+                       
+                        <input type="number" name="checking_id" value="{{ checking.id }}" hidden>
+                        
+                        
+               
+                        
+               
+               
+                    
+                    <button type="submit" class="btn searchbtn " >check out</button>
+                </td>
+                      </form>
+    
+            </tr>
+            {% endfor %}
+    
+        </tbody>
+        
+    </table>
+    {% if bookingsin.count == 0 %}
+            <tr><p style="text-align: center; "> No open checkings... </p></tr>
+            {%endif%}
+    
+    
+    </div>
+
+
+
+<h5> Checked out</h5>
+    <table>
+        <tbody>
+            <tr>
+                <th>  Booking</th>
+                <th>room</th>
+                <th>#rooms</th>
+                <th>Date In</th>
+                <th>Date Out</th>
+                <th>Price</th>
+                <th>Checked out?</th>
+                
+                
+                
+    
+            </tr>
+            {% for checking in bookingsout %}
+            <tr>
+                <td>{{checking.booking}}</td>
+                <td>{{checking.checkin_room}}</td>
+                <td>{{checking.booking.number_of_rooms}}</td>
+                <td>{{checking.checkin_date}}</td>
+                <td> {{checking.checkout_date}}</td>
+                <td>{{checking.booking.book_price}}</td>
+                <td> {{checking.check_out_status}}</td>
+               
+               
+               
+                
+                
+            </tr>
+            {% endfor %}
+    
+        </tbody>
+    </table>
+    
+    
+    </div>
+
+</div> 
+
+<style>
+    .checkincontainer{
+        height:80vh
+    }
+    .search{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .search #checksearch{
+        padding:1% 5%
+    }
+    .searchbtn{
+        padding: 5px 7px;
+        border-radius: 0;
+        display: inline-block;
+    }
+    h2,h3,h5{
+        text-align: center;
+        color:#c66f2c;
+        margin-bottom: 10px;
+    }
+    .checkresult{
+        margin-left:5px;
+        overflow-x:auto;
+    }
+    table{
+        width:95%;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+    th,td{
+        padding:3px
+    }
+    tr:nth-child(even) {
+  background-color: #dddddd;}
+  .var1{
+    text-align: right;
+  }
+  #rooms{
+    width: 100px;
+  }
+
+</style>
+{% endblock %} 

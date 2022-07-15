@@ -1,0 +1,98 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="roomdetailcontainer"> 
+        <div class="roomhead">
+
+          <h1 id="imagetext"> Our Rooms </h1>
+        </div>
+
+        <div class="values">
+          <h2> Welcome to Bohamia hotel and resort</h2>
+          <br>
+          <p> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Placeat repellendus assumenda neque aperiam atque, perferendis
+                quia ullam odio necessitatibus saepe tenetur a laboriosam reprehenderit id 
+                voluptates eos recusandae iste unde amet qui omnis aliquam!
+              Accusantium molestiae mollitia quos quaerat ipsa!</p>
+
+
+        </div>
+        <div class="rooms">
+          <div class="roomcontainer">
+              {% for room in rooms %}
+              <div class="roomitem">
+                  <figure>
+                      <img src="{{room.image2.url}}" alt="Trulli" style="width:100%">
+                      <figcaption>
+                          <h2> {{room.room_type|title}} </h2>
+                          
+                          <p>{{room.snippet|safe}}</p>
+                          <a href="{% url 'roomdetail' type1=room.room_type %}"><p>More Details...</p></a>
+
+                      </figcaption>
+                  </figure>
+
+              </div>
+              {% endfor %}
+          </div>
+
+        </div>
+        <div class="address">
+      
+
+        </div>
+  </div> 
+
+
+<style>
+    .roomhead{
+        background-image: url("/static/images/rooms2.png"); 
+    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 550px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 50px;
+    color:#c66f2c;
+    
+    
+    position: relative;
+    
+    }
+#imagetext{
+   
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  display:block;
+  margin:auto;
+  font-size: 70px;
+}
+
+.roomcontainer{
+  display:flex;
+  width: 90%;
+  margin:auto;
+  justify-content: space-between;
+  
+}
+.roomitem{
+width:33%;
+}
+.values{
+  margin: auto;
+  margin-top: 5%;
+  margin-bottom: 5%;
+ text-align: center;
+ width:80%;
+
+}
+.roomdetailcontainer{
+  background-color: rgba(198,111,44,.2)
+}
+</style>
+{% endblock %} 

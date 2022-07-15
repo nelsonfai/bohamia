@@ -1,0 +1,42 @@
+
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+     
+<section class="about">
+    <div class="about-container">
+            <div class="aboutinfo">
+                    <h1 class="about_head"> About Us</h1>
+                    <br>
+                    <p class="about_p">  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Odit eos soluta consectetur delectus at nam deleniti culpa,
+                        Lorem ipsum dolor sit amet Lorem ipsum dolor sit.
+                        natus magnam, suscipit quia consequuntur 
+                        atque Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Repellendus cupiditate et distinctio ipsa explicabo! sapiente asperiores 
+                        quaerat perspiciatis officia. Nulla, nesciunt!</p>
+
+                        
+                        <div>
+                            <h4> find us!</h4>
+                            <div style="width: 100%"><iframe width="100%" height="200" frameborder="0" scrolling="no"
+                                 marginheight="0" marginwidth="0"
+                                  src="https://maps.google.com/maps?width=100%25&amp;height=50px&amp;hl=en&amp;q=Otto-Keller-Stra%C3%9Fe%2017,%2047057%20Duisburg+(bOHAMIA%20Hotel%20&amp;%20resort)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                                  <a href="https://www.gps.ie/sport-gps/">bike gps</a></iframe>
+                            </div>
+                        </div>
+                        <br>
+                               
+                        </div>
+            </div>
+    
+            <div class="about-image">
+                <img src="{% static '/images/lobby.jpg'%}" alt=""  width="75%">
+    
+            </div>
+    </div>
+    
+    </section>
+    
+    {% endblock %}

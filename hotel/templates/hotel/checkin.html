@@ -1,0 +1,133 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<h2> Check In</h2>
+<div class="checkincontainer">
+<div class="search"> 
+    <form action="{% url 'checkin'%}" method="post">
+    {% csrf_token %}
+    <input type="search" name="checksearch" id="checksearch" placeholder="search booking by name...">
+    <button type="submit" class="btn searchbtn"> search</button>
+    </form>
+</div>
+<h5><a href="{% url 'addcheckin'%}">View all Check Ins </a> </h5>
+<h3> All open bookings with customer name:{{search}}</h3>
+
+
+
+
+
+<div class="checkresult">
+    
+   
+<table>
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <th>Room type</th>
+            <th>#rooms</th>
+            <th>Date In</th>
+            <th>Date Out</th>
+            <th>Price</th>
+            <th>Book_status</th>
+            
+            <th> Check in?</th>
+            <th> Rooms</th>
+
+        </tr>
+        {% for booking in bookings %}
+        <tr>
+            <td> {{booking.customer}}--</td>
+            <td> {{booking.room_type}}--</td>
+            <td>{{booking.number_of_rooms}}-- </td>
+            <td>{{booking.Date_in}} --</td>
+            <td> {{booking.Date_out}}--</td>
+            <td>{{booking.book_price}}-- </td>
+            <td> {{booking.booking_complete}}--</td>
+           
+            <td>
+                <form action="{% url 'addcheckin'%}" method="post">
+                    {% csrf_token %}
+                    <label for="cars">Checkin?:</label>
+                    <select name="checkin?" id="checkin?">
+                        <option value=False >No</option>
+                        <option value=True >Yes</option>                 
+                    </select>
+                    <input type="number" name="booking_id" id="" value="{{booking.id}}" hidden>
+                    <input type="text" name="booking_roomtype" id="" value="{{booking.room_type}}" hidden>
+                    
+            </td>
+                    
+            <td> 
+                <input type="text" name="room_number" id="rooms">
+            </td>
+            <td class="var1">
+                
+                <button type="submit" class="btn searchbtn " >check in</button>
+            </td>
+                  </form>
+             
+
+        </tr>
+        {% endfor %}
+
+    </tbody>
+</table>
+
+
+</div>
+</div>
+<style>
+    .checkincontainer{
+        height:80vh
+    }
+    .search{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .search #checksearch{
+        padding:1% 5%
+    }
+    .searchbtn{
+        padding: 5px 7px;
+        border-radius: 0;
+        display: inline-block;
+    }
+    h2,h3 ,h5{
+        text-align: center;
+        color:#c66f2c;
+        margin-bottom: 10px;
+    }
+    h5 a{
+        color:#355f31;
+        text-decoration: underline;
+    }
+    h5 a:hover{
+        color:#c66f2c;
+        text-decoration:none;
+    }
+    .checkresult{
+        margin-left:5px;
+        overflow-x:auto;
+    }
+    table{
+        width:1400px;
+        margin: auto;
+    }
+    th,td{
+        padding:3px;
+        
+    }
+    tr:nth-child(even) {
+  background-color: #dddddd;}
+  .var1{
+    text-align: right;
+  }
+  #rooms{
+    width: 100px;
+  }
+
+
+</style>
+
+{% endblock %} 

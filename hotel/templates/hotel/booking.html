@@ -1,0 +1,116 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+
+
+
+<section >
+    <form action="{% url 'payment'%}" method="post">
+    {% csrf_token %}
+
+            <h2 style="margin-bottom:10px;">Choose a Room Category</h2>
+        <div class="roomcategory">
+
+            <div>
+                 <input type="radio" name="roomcategory" id="premium" value="premium" required="required" >
+                 <label class="basic-label col" for="premium" >
+                  <div> <img class= 'categoryimage' src="{% static '/images/room1.jpg' %}" alt="First slide"width="90%" > </div> <strong> Single-65€/night  </strong></label>
+            </div>
+
+            <div> 
+                <input type="radio" name="roomcategory" id="double" value="double"  required="required">
+                <label class="basic-label  col" for="double">
+                <img class= 'categoryimage' src="{% static '/images/room2.jpg' %}" alt="First slide"width="90%" > <strong>Double- 100€/night  </strong></label>
+            </div>
+
+            <div> 
+                <input type="radio" name="roomcategory" id="single" value="single" required="required">
+                <label class="premium-label  col" for="single">
+                    <img class= 'categoryimage' src="{% static '/images/room4.jpg' %}" alt="First slide"width="90%" > <strong> Premium-133€/night </strong></label>
+            </div>
+        </div>
+
+        <div class="datainput">
+            <div> <label for="numberofrooms" >Number of rooms:</label> 
+                <input type="number" name="numberofrooms" id="numberofrooms" min="1"  value="1" required="required"> </div>
+            <div>  <label for="bookfrom" class="lmove"> From :</label>  
+               <input type="date" name="bookfrom" id="bookfrom" required="required">
+            </div>
+            <div>
+            <label for="booktill"  class="lmove"> To: </label>
+                <input type="date" name="booktill" id="booktill" required="required">
+            </div>
+             
+        </div>
+      
+       <button type="submit"> Submit</button>
+    </form>
+
+        
+    
+</section>
+
+<style>
+
+
+input[type=radio]:checked  + label {
+ opacity: .5;
+  
+}
+section{
+    width: 80%;
+    margin: auto;
+
+}
+    .roomcategory{
+        display:flex;
+       
+        margin-bottom: 40px;
+    }
+    
+ button,strong{
+    padding:1% 3%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #355f31;
+    color: white;
+    border:none;
+    display: block;
+    margin: auto;
+    text-align: center;
+
+ }
+ strong{
+    width:96%;
+    padding:3%;
+    margin-top: 5px;
+
+ }
+ .datainput{
+    width: 90%;
+   
+    margin-bottom: 5%;
+    display: flex;
+   
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    
+ }
+ .datainput input{
+    padding: 2%;
+   
+ }
+.datainput div{
+    width:150px
+}
+ .lmove{
+    margin-left: 40px;
+ }
+
+   </style>
+
+{% endblock %}
+
+

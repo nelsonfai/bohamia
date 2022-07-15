@@ -1,0 +1,76 @@
+
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+        
+<div class="heroimage">
+    
+     <a href="{% url 'book'%}"><button class="book"> Book </button></a>
+</div>
+
+
+<section class="overview" > 
+<div class="sectiondescription"  style="width:60% ; margin:auto ;text-align:center; margin-top: 5% ;margin-bottom: 5%;">
+    <h1 class="highlight "> What We Offer </h1>
+    <p style=" margin-top: 5% ;margin-bottom: 5%;" > Lorem, ipsum dolor sit Lorem ipsum dolor sit amet consectetur adipisicing elit.
+         Incidunt blanditiis nulla omnis quidem magni mollitia consectetur, dignissimos dicta perspiciatis earum! amet consectetur adipisicing elit.
+          Commodi nam nisi aut illum, voluptas dignissimos debitis quod impedit cupiditate animi.</p>    
+</div>
+
+    <div class="carousell-container">
+        <div class="carousellslide"> 
+
+            <div class="carousell-item "  >
+                
+                <div  > <img class= 'sectionimage' src="{% static '/images/room1.jpg' %}" alt="First slide"width="100%" ></div>
+                <div class="caption">Your stay</div>
+            </div>
+            <br>
+            <br>
+
+            <div class="carousell-item"  >
+               
+                <div  > <img class= 'sectionimage' src="{% static '/images/room4.jpg' %}" alt="First slide"  width="100%"></div>
+                <div class="caption"> Activities.</div>
+            </div>
+
+            <div class="carousell-item "   >
+                
+                <div  > <img class= 'sectionimage' src="{% static '/images/resort.jpg' %}" alt="First slide" width="100%"></div>
+                <div class="caption"  > Resort.</div>
+            </div>
+
+     
+        </div>    
+  </div>
+</section>
+
+
+<section class="about">
+<div class="about-container">
+        <div class="aboutinfo">
+                <h1 class="about_head"> Our Story</h1>
+                <br>
+                <p class="about_p">  Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Odit eos soluta consectetur delectus at nam deleniti culpa,
+                    Lorem ipsum dolor sit amet Lorem ipsum dolor sit.
+                    natus magnam, suscipit quia consequuntur 
+                    atque Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Repellendus cupiditate et distinctio ipsa explicabo! sapiente asperiores 
+                    quaerat perspiciatis officia. Nulla, nesciunt!
+                  
+                </p>
+             
+        </div>
+
+        <div class="about-image">
+            <img src="{% static '/images/lobby.jpg'%}" alt="" style="max-width:300px;"  >
+
+        </div>
+       
+</div>
+
+
+</section>
+
+{% endblock %}

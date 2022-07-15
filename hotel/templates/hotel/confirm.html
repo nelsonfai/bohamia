@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+
+
+
+
+   
+
+
+<div class="paymentcontainer">
+    <h4>Enter purchase key  sent to {{ request.session.email }} </h4>
+    <br> 
+    <form action="{% url 'validate' %}" method="POST">
+    {% csrf_token %}
+        <input type="text" name="userkey">
+        <br>
+        <button type="submit" > Confirm</button>
+    </form>
+</div>
+
+<style>
+.paymentcontainer{
+    width:40%;
+    height:40vh;
+    margin:auto;
+    margin-top: 1%;
+    font-family: 'Open Sans', sans-serif;
+    padding: 5%;
+    text-align: center;
+    box-shadow: 1px 1px 3px grey;
+}
+.paymentcontainer input{
+    padding: 4%;
+    
+}
+button,.btn{
+    padding:2% 4%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #355f31;
+    color: white;
+    border:none;
+    display: block;
+    margin: auto;
+    text-align: center;
+
+ }
+
+footer{
+    position:fixed;
+    bottom: 0px;
+    
+    
+}
+footer .navlinks{
+    text-align: center;  
+}
+</style>
+{%endblock%}
